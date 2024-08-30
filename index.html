@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getComputerChoice() {
+            let num = Math.random()
+
+            if (num <= .33) {
+                return("rock")
+            } else if (num <= .66) {
+                return("paper")
+            } else {
+                return("scissors")
+            }
+        }
+        console.log(getComputerChoice())
+
+        let question = prompt("Rock, paper, scissors")
+
+        function getHumanChoice() {
+            if (question == ("rock" || "Rock")) {
+                return("Rock")
+            } else if (question == "paper") {
+                return("Paper")
+            } else if (question == "scissors") {
+                return("Scissors")
+            } else {
+                return("Input invalid. Try again")
+            }
+        }
+
+        console.log(getHumanChoice(question))
+
+    </script>
+    
+</body>
+</html>
