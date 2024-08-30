@@ -12,23 +12,24 @@
             let num = Math.random()
 
             if (num <= .33) {
-                return("rock")
+                return("Rock")
             } else if (num <= .66) {
-                return("paper")
+                return("Paper")
             } else {
-                return("scissors")
+                return("Scissors")
             }
         }
         console.log(getComputerChoice())
 
         let question = prompt("Rock, paper, scissors")
+    
 
         function getHumanChoice() {
-            if (question == ("rock" || "Rock")) {
+            if (question.toLowerCase() == "rock") {
                 return("Rock")
-            } else if (question == "paper") {
+            } else if (question.toLowerCase() == "paper") {
                 return("Paper")
-            } else if (question == "scissors") {
+            } else if (question.toLowerCase() == "scissors") {
                 return("Scissors")
             } else {
                 return("Input invalid. Try again")
@@ -36,6 +37,30 @@
         }
 
         console.log(getHumanChoice(question))
+
+        let humanScore = 0
+        let computerScore = 0
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanSelection == "Rock" && computerSelection == "scissors") {
+                return("You Win! Rock beats Scissors")
+            } else if (humanSelection == "Scissors" && computerSelection == "paper") {
+                return("You Win! Scissors beats Paper")
+            } else if (humanSelection == "Paper" && computerSelection == "rock") {
+                return("You Win! Paper beats Rock")
+            } else if (humanSelection == computerSelection) {
+                return("You TIED! " + computerSelection + " and " + humanSelection + " tie.")
+            } 
+            else {
+                return("You LOSE!! " + computerSelection + " beats " + humanSelection)
+            }
+        }
+
+        const humanSelection = getHumanChoice()
+        const computerSelection = getComputerChoice()
+
+        playRound(humanSelection, computerSelection)
+        console.log(playRound())
 
     </script>
     
