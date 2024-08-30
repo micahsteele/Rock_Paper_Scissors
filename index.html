@@ -19,12 +19,9 @@
                 return("Scissors")
             }
         }
-        console.log(getComputerChoice())
-
-        let question = prompt("Rock, paper, scissors")
-    
 
         function getHumanChoice() {
+            let question = prompt("Rock, paper, or scissors")
             if (question.toLowerCase() == "rock") {
                 return("Rock")
             } else if (question.toLowerCase() == "paper") {
@@ -36,31 +33,62 @@
             }
         }
 
-        console.log(getHumanChoice(question))
 
-        let humanScore = 0
-        let computerScore = 0
+        function playGame() {
+            let humanSelection = getHumanChoice();
+            let computerSelection = getComputerChoice();
+            let humanScore = 0;
+            let computerScore = 0;
+            let counter = 0;
 
-        function playRound(humanChoice, computerChoice) {
-            if (humanSelection == "Rock" && computerSelection == "scissors") {
-                return("You Win! Rock beats Scissors")
-            } else if (humanSelection == "Scissors" && computerSelection == "paper") {
-                return("You Win! Scissors beats Paper")
-            } else if (humanSelection == "Paper" && computerSelection == "rock") {
-                return("You Win! Paper beats Rock")
-            } else if (humanSelection == computerSelection) {
-                return("You TIED! " + computerSelection + " and " + humanSelection + " tie.")
-            } 
-            else {
-                return("You LOSE!! " + computerSelection + " beats " + humanSelection)
-            }
+            function playRound(humanChoice, computerChoice) {
+                console.log(humanSelection);
+                console.log(computerSelection);
+                    console.log(`Your selection is : ${humanSelection}`);
+                    console.log(`PC selection is : ${computerSelection}`);
+                    if (humanSelection == "Rock" && computerSelection == "Scissors") {
+                        humanScore += 1;
+                        counter += 1;
+                        alert("You Win! Rock beats Scissors you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
+                    } else if (humanSelection == "Scissors" && computerSelection == "Paper") {
+                        humanScore += 1;
+                        counter += 1;
+                        alert("You Win! Scissors beats Paper, you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
+                    } else if (humanSelection == "Paper" && computerSelection == "Rock") {
+                        humanScore += 1;
+                        counter += 1;
+                        alert("You Win! Paper beats Rock you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
+                    } else if (humanSelection == computerSelection) {
+                        counter += 1;
+                        alert("You TIED! " + computerSelection + " and " + humanSelection + " tie. you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
+                    } 
+                    else {
+                        computerScore += 1;
+                        counter += 1;
+                        alert("You LOSE!! " + computerSelection + " beats " + humanSelection + " you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
+                    }
+                }
+                
+                playRound()
+
+                if (counter <= 5) {
+                    playRound()
+                    playRound()
+                    playRound()
+                    playRound()
+                    
+                    if (counter == 5) {
+                    alert(" GAME OVER! You scored " + humanScore + " the computer scored " + computerScore + " you played " + counter + " rounds");
+                    return;
+                } else {
+                    alert("error")
+                }
+                }
+
         }
+    
+        playGame()
 
-        const humanSelection = getHumanChoice()
-        const computerSelection = getComputerChoice()
-
-        playRound(humanSelection, computerSelection)
-        console.log(playRound())
 
     </script>
     
