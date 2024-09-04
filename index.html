@@ -93,9 +93,9 @@
                 if (counter < 5) {
                     alert("play again")
                     return
-                } else if (counter == 5) {
-                    alert(" GAME OVER! You scored " + humanScore + " the computer scored " + computerScore + " you played " + counter + " rounds");
-                    return;
+                } else if (counter == 5) {  
+                    alert(" GAME OVER! You played " + counter + " rounds");
+                    return(counter = 0, humanScore = 0, computerScore = 0);
                 } else {
                     alert("error")
                 }
