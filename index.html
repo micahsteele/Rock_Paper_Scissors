@@ -7,7 +7,20 @@
 </head>
 
 <body>
+    <div>
+        <button id = "rockButton" value = "Rock">Rock</button>
+        <button id = "paperButton" value = "Paper">Paper</button>
+        <button id = "scissorsButton" value= "Scissors">Scissors</button>
+    </div>
+    <div id = "divResult">
+        <p id ="pCounter">Play Rock Paper Scissors against the computer</p>
+        <p id = "counterHumanScore"></p>
+        <p id = "counterComputerScore"></p>
+    </div>
     <script>
+        const buttons = document.querySelectorAll("button");
+        console.log(buttons)
+
         function getComputerChoice() {
             let num = Math.random()
 
@@ -20,30 +33,36 @@
             }
         }
 
-        function getHumanChoice() {
-            let question = prompt("Rock, paper, or scissors")
-            if (question.toLowerCase() == "rock") {
-                return("Rock")
-            } else if (question.toLowerCase() == "paper") {
-                return("Paper")
-            } else if (question.toLowerCase() == "scissors") {
-                return("Scissors")
-            } else {
-                return("Input invalid. Try again")
-            }
-        }
+        // function getHumanChoice() {
+        //     let question = prompt("Rock, paper, or scissors")
+        //     if (question.toLowerCase() == "rock") {
+        //         return("Rock")
+        //     } else if (question.toLowerCase() == "paper") {
+        //         return("Paper")
+        //     } else if (question.toLowerCase() == "scissors") {
+        //         return("Scissors")
+        //     } else {
+        //         return("Input invalid. Try again")
+        //     }
+        // }
 
 
-        function playGame() {
-            let humanSelection = getHumanChoice();
-            let computerSelection = getComputerChoice();
             let humanScore = 0;
             let computerScore = 0;
             let counter = 0;
 
-            function playRound(humanChoice, computerChoice) {
+            buttons.forEach(button =>{
+                button.addEventListener("click", function() {
+                    playRound(button.value)
+                })
+            })
+            
+
+            function playRound(humanSelection) {
+                let computerSelection = getComputerChoice();
                 console.log(humanSelection);
                 console.log(computerSelection);
+                
                     console.log(`Your selection is : ${humanSelection}`);
                     console.log(`PC selection is : ${computerSelection}`);
                     if (humanSelection == "Rock" && computerSelection == "Scissors") {
@@ -67,27 +86,22 @@
                         counter += 1;
                         alert("You LOSE!! " + computerSelection + " beats " + humanSelection + " you have played " + counter + " rounds and your score is " + humanScore + " and the computer score is " + computerScore)
                     }
-                }
-                
-                playRound()
+                    document.getElementById("pCounter").textContent = "number of games played:" + counter;
+                    document.getElementById("counterHumanScore").textContent = "Player Score: " + humanScore;
+                    document.getElementById("counterComputerScore").textContent = "Computer Score: " + computerScore;
 
-                if (counter <= 5) {
-                    playRound()
-                    playRound()
-                    playRound()
-                    playRound()
-                    
-                    if (counter == 5) {
+                if (counter < 5) {
+                    alert("play again")
+                    return
+                } else if (counter == 5) {
                     alert(" GAME OVER! You scored " + humanScore + " the computer scored " + computerScore + " you played " + counter + " rounds");
                     return;
                 } else {
                     alert("error")
                 }
                 }
-
-        }
-    
-        playGame()
+                
+                
 
 
     </script>
